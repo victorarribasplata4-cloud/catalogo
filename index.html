@@ -3,155 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>catalago</title>
+    <title>Catálogo Completo - Tablas de Surf</title>
     <style>
-:root { --primary-color: #0284c7;}
-* { box-sizing: border-box; margin: 0; padding: 0;}
-body {font-family: Arial, Helvetica, sans-serif;background-color: #f8fafc;}
-.pantalla {display: none;}
-.pantalla:target {display: block;}
-#inicio {display: flex;}
-#catalogo:target ~ #inicio {display: none;}
-.hero-inicio {min-height: 100vh;width: 100%;background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('18.jpg') center/cover no-repeat;flex-direction: column;justify-content: center;align-items: center;text-align: center;color: white; padding: 20px;}
-.hero-inicio h1 {font-size: 3rem;margin-bottom: 15px;text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
-.hero-inicio p { font-size: 1.3rem;margin-bottom: 30px;}
-.btn-entrar { background-color: #00bbff; color: #000; padding: 15px 35px; border-radius: 30px; text-decoration: none;font-weight: bold;font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);transition: all 0.3s ease;}
-.btn-entrar:hover { background-color: #2563eb;color: #ffffff;transform: scale(1.05);}
-header {background: linear-gradient(to right, rgb(0, 187, 255), rgb(255, 255, 255));color: rgb(0, 0, 0);text-align: center;padding: 30px;position: relative;}
-.btn-volver { position: absolute;top: 15px; left: 20px;text-decoration: none;background-color: rgba(255, 255, 255, 0.8);color: #000; padding: 8px 15px;border-radius: 5px;font-weight: bold;font-size: 0.9rem;}
-.btn-volver:hover {background-color: #ffffff;}
-.catalogo {display: grid;grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 40px 16px;max-width: 1200px;margin: 0 auto;}
-.tarjeta {background-color: white; width: 100%;height: 280px;border-radius: 10px; border: 1px solid #ddd;box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);text-align: center;overflow: hidden;transition: 0.3s; padding: 15px 10px;display: flex; flex-direction: column; justify-content: space-between;align-items: center;}
-.tarjeta h3 {font-size: 0.95rem;}
-.tarjeta img {max-height: 120px;object-fit: contain;transition: transform 0.3s ease;}
-.tarjeta:hover img {transform: scale(1.1);}
-.btn-precio {display: block;width: 100%; text-decoration: none; font-weight: 700;font-size: 0.95rem;color: var(--primary-color);background-color: #f1f5f9; padding: 0.5rem 1rem; border-radius: 6px;cursor: pointer;transition: all 0.2s ease-in-out;}
-.btn-precio:hover {background-color: #2563eb;color: #ffffff;}
-
-.btn-precio:active {background-color: #1d4ed8;transform: scale(0.98);}
-
-/* Responsivo para móviles */
-@media (max-width: 900px) {.catalogo {grid-template-columns: repeat(2, 1fr);}}
-
-@media (max-width: 500px) {.catalogo {grid-template-columns: 1fr;}}
-   </style>
+        :root { --primary-color: #0284c7; }
+        * { box-sizing: border-box; margin: 0; padding: 0;}
+        body { font-family: Arial, Helvetica, sans-serif; background-color: #f8fafc; }
+        .pantalla { display: none;}
+        .pantalla:target { display: block; }
+        #inicio { display: flex; }
+        #catalogo:target ~ #inicio { display: none; }
+        .hero-inicio { min-height: 100vh; width: 100%; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('18.jpg') center/cover no-repeat; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px; }
+        .hero-inicio h1 { font-size: 3rem; margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
+        .hero-inicio p { font-size: 1.3rem; margin-bottom: 30px; }
+        .btn-entrar { background-color: #00bbff; color: #000; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;}
+        .btn-entrar:hover { background-color: #2563eb; color: #ffffff; transform: scale(1.05);}
+        header { background: linear-gradient(to right, rgb(0, 187, 255), rgb(255, 255, 255)); color: rgb(0, 0, 0); text-align: center; padding: 30px; position: relative;}
+        .btn-volver { position: absolute; top: 15px; left: 20px; text-decoration: none; background-color: rgba(255, 255, 255, 0.8); color: #000; padding: 8px 15px; border-radius: 5px; font-weight: bold; font-size: 0.9rem;}
+        .btn-volver:hover { background-color: #ffffff;}
+        .contenido-principal { display: flex; gap: 20px; max-width: 1400px; margin: 0 auto; padding: 20px 16px; align-items: flex-start; }
+        .catalogo { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;}
+        .tarjeta { background-color: white; width: 100%; min-height: 320px; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); text-align: center; overflow: hidden; transition: 0.3s; padding: 15px 10px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+        .tarjeta h3 { font-size: 0.95rem;}
+        .tarjeta img { max-height: 110px; object-fit: contain; transition: transform 0.3s ease;}
+        .tarjeta:hover img { transform: scale(1.1);}
+        .precio-producto { font-weight: bold; color: #2563eb; font-size: 1.1rem; margin: 5px 0; }
+        .acciones-tarjeta { display: flex; flex-direction: column; gap: 6px; width: 100%;}
+        .btn-agregar { display: block; width: 100%; background-color: #00bbff; color: #000; border: none; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        .btn-agregar:hover { background-color: #2563eb; color: white; }
+        .btn-precio { display: block; width: 100%; text-decoration: none; font-weight: 700; font-size: 0.85rem; color: var(--primary-color); background-color: #f1f5f9; padding: 0.4rem; border-radius: 6px; text-align: center; transition: all 0.2s ease-in-out; border: none; font-family: inherit; cursor: pointer; }
+        .btn-precio:hover { background-color: #cbd5e1; }
+        .carrito-panel { width: 320px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px; position: sticky; top: 20px; }
+        .carrito-panel h2 { font-size: 1.3rem; margin-bottom: 15px; text-align: center; color: #333; }
+        .items-carrito { max-height: 380px; overflow-y: auto; margin-bottom: 15px;}
+        .item-carrito { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;}
+        .info-item h4 { font-size: 0.85rem; margin-bottom: 3px; }
+        .info-item span { font-size: 0.8rem; color: #666; }
+        .controles-item { display: flex; align-items: center; gap: 5px; }
+        .btn-cantidad { background: #e2e8f0; border: none; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-eliminar { background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; margin-left: 5px;}
+        .total-carrito { font-size: 1.1rem; font-weight: bold; text-align: right; margin: 15px 0;}
+        .btn-vaciar { width: 100%; background: #64748b; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s;}
+        .btn-vaciar:hover { background: #475569; }
+        .modal-info { display: none; position: fixed; z-index: 2000; inset: 0; background: rgba(0, 0, 0, 0.55); justify-content: center; align-items: center; padding: 20px;}
+        .modal-info.contenedor-visible { display: flex; }
+        .modal-info-contenido { position: relative; width: 360px; max-width: 100%; background: #fff; border-radius: 15px; padding: 25px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.25); animation: aparecerInfo 0.25s ease; }
+        .modal-info-contenido img { width: 150px; height: 130px; object-fit: contain; margin: 15px 0;}
+        .modal-info-contenido h2 { color: #0284c7; font-size: 1.25rem; margin: 10px 20px; }
+        .modal-info-contenido p { color: #475569; margin: 10px 0; }
+        .modal-info-contenido .precio-modal { color: #2563eb; font-size: 1.2rem; font-weight: bold; }
+        .cerrar-modal { position: absolute; top: 8px; right: 14px; border: none; background: transparent; color: #555; font-size: 30px; cursor: pointer; }
+        .btn-enlace-producto { display: inline-block; margin-top: 12px; padding: 10px 16px; border-radius: 7px; background: #00bbff; color: #000; text-decoration: none; font-weight: bold; }
+        @keyframes aparecerInfo { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+        @media (max-width: 1024px) {
+            .contenido-principal { flex-direction: column; }
+            .carrito-panel { width: 100%; position: static; }
+            .catalogo { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) { .catalogo { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .catalogo { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Tablas de Surf</h1>
-        <p>Deslízate sobre las olas, domina el mar</p>
-    </header> <section id="inicio" class="pantalla hero-inicio">
+
+    <section id="inicio" class="pantalla hero-inicio">
         <h1>Tablas de Surf</h1>
         <p>Deslízate sobre las olas, domina el mar</p>
         <a href="#catalogo" class="btn-entrar">Ver Catálogo de Productos</a>
     </section>
+
     <section id="catalogo" class="pantalla">
         <header>
             <a href="#inicio" class="btn-volver">← Volver</a>
             <h1>Tablas de Surf</h1>
             <p>Deslízate sobre las olas, domina el mar</p>
         </header>
-    <div class="catalogo">
-        <div class="tarjeta">
-             <h3>Plataforma o Deck | Paddle Board</h3>
-             <img src=" 20.jpg" width="140" > 
-             <a href="https://www.sunsetboard.com/producto/plataforma-o-deck-paddle-board/" class="btn-precio"> mas informacion</a>
+        <div class="contenido-principal">
+            <div class="catalogo">
+                
+                <!-- Producto 1 -->
+                <div class="tarjeta">
+                    <h3>Plataforma o Deck | Paddle Board</h3>
+                    <img src="20.jpg" alt="Plataforma o Deck"> 
+                    <p class="precio-producto">S/. 1,200.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Plataforma o Deck | Paddle Board', 1200)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/plataforma-o-deck-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="tarjeta">
+                    <h3>Inflador eléctrico para ISUP</h3>
+                    <img src="19.jpg" alt="Inflador eléctrico">
+                    <p class="precio-producto">S/. 350.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Inflador eléctrico para ISUP', 350)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/inflador-electrico-para-isup/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="tarjeta">
+                    <h3>12′ Explorer | Paddle Board</h3>
+                    <img src="18.jpg" alt="12 Explorer">
+                    <p class="precio-producto">S/. 2,500.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('12′ Explorer | Paddle Board', 2500)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/12%e2%80%b2-explorer-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="tarjeta">
+                    <h3>14′ Race | Paddle Board</h3>
+                    <img src="17.jpg" alt="14 Race">
+                    <p class="precio-producto">S/. 3,100.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('14′ Race | Paddle Board', 3100)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/14-race-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="tarjeta">
+                    <h3>Surf Waikiki 9’6″ | Paddle Surf</h3>
+                    <img src="16.jpg" alt="Surf Waikiki 9'6">
+                    <p class="precio-producto">S/. 2,200.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Surf Waikiki 9’6″ | Paddle Surf', 2200)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/surf-waikiki-96-paddle-surf/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="tarjeta">
+                    <h3>9’6 Cuzco Express | Tablas de Surf</h3>
+                    <img src="15.jpg" alt="9'6 Cuzco Express">
+                    <p class="precio-producto">S/. 1,850.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('9’6 Cuzco Express | Tablas de Surf', 1850)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/surf-longboard-kontiki-96-paddle-surf/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 7 -->
+                <div class="tarjeta">
+                    <h3>Surf Longboard Kontiki 8’10» | Paddle Surf</h3>
+                    <img src="14.jpg" alt="Surf Longboard Kontiki 8'10">
+                    <p class="precio-producto">S/. 1,950.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Surf Longboard Kontiki 8’10» | Paddle Surf', 1950)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/surf-longboard-kontiki-810-paddle-surf/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 8 -->
+                <div class="tarjeta">
+                    <h3>Surf Longboard Kontiki 10’6″ | Paddle Surf</h3>
+                    <img src="13.jpg" alt="Surf Longboard Kontiki 10'6">
+                    <p class="precio-producto">S/. 2,350.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Surf Longboard Kontiki 10’6″ | Paddle Surf', 2350)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/surf-longboard-kontiki-106-paddle-surf/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 9 -->
+                <div class="tarjeta">
+                    <h3>Big Fish 9’6 x 38″ | Paddle Board</h3>
+                    <img src="1.jpg" alt="Big Fish 9'6">
+                    <p class="precio-producto">S/. 2,400.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Big Fish 9’6 x 38″ | Paddle Board', 2400)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/big-fish-96-x-38%e2%80%b3-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 10 -->
+                <div class="tarjeta">
+                    <h3>Big Fish Pro 9’6 x 38″ | Paddle Board</h3>
+                    <img src="2.jpg" alt="Big Fish Pro">
+                    <p class="precio-producto">S/. 2,450.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Big Fish Pro 9’6 x 38″ | Paddle Board', 2450)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/big-fish-96-x-38%e2%80%b3-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 11 -->
+                <div class="tarjeta">
+                    <h3>All Around 9’6″ | Paddle Board</h3>
+                    <img src="3.jpg" alt="All Around 9'6">
+                    <p class="precio-producto">S/. 1,750.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('All Around 9’6″ | Paddle Board', 1750)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/all-around-96-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 12 -->
+                <div class="tarjeta">
+                    <h3>8’10″ Pluma | Paddle Board</h3>
+                    <img src="4.jpg" alt="8'10 Pluma Azul">
+                    <p class="precio-producto">S/. 1,650.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('8’10″ Pluma | Paddle Board', 1650)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/810%e2%80%b3-pluma-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 13 -->
+                <div class="tarjeta">
+                    <h3>8’10″ Pluma Red Edition | Paddle Board</h3>
+                    <img src="5.jpg" alt="8'10 Pluma Rojo">
+                    <p class="precio-producto">S/. 1,650.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('8’10″ Pluma Red Edition | Paddle Board', 1650)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/810%e2%80%b3-pluma-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 14 -->
+                <div class="tarjeta">
+                    <h3>10′4 SUP Air Evo inflable RRD | Paddle Board</h3>
+                    <img src="6.jpg" alt="10'4 SUP Air Evo">
+                    <p class="precio-producto">S/. 2,800.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('10′4 SUP Air Evo inflable RRD | Paddle Board', 2800)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/10%e2%80%b34-sup-air-evo-inflable-rrd-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 15 -->
+                <div class="tarjeta">
+                    <h3>Kayac personal | Kayak</h3>
+                    <img src="7.jpg" alt="Kayak personal">
+                    <p class="precio-producto">S/. 1,400.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Kayac personal | Kayak', 1400)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/kayac-personal-kayak/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 16 -->
+                <div class="tarjeta">
+                    <h3>Kayac tandem | Kayak</h3>
+                    <img src="8.jpg" alt="Kayak tandem">
+                    <p class="precio-producto">S/. 1,900.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Kayac tandem | Kayak', 1900)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/kayac-tandem-kayak/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 17 -->
+                <div class="tarjeta">
+                    <h3>SUP Grupal 15′ | Paddle Board</h3>
+                    <img src="9.jpg" alt="SUP Grupal 15'">
+                    <p class="precio-producto">S/. 4,500.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('SUP Grupal 15′ | Paddle Board', 4500)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/sup-grupal-15-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 18 -->
+                <div class="tarjeta">
+                    <h3>All Around 10’6″ | Paddle Board</h3>
+                    <img src="10.jpg" alt="All Around 10'6">
+                    <p class="precio-producto">S/. 1,850.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('All Around 10’6″ | Paddle Board', 1850)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/all-around-106-paddle-board/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 19 -->
+                <div class="tarjeta">
+                    <h3>Boya para SUP RRD</h3>
+                    <img src="11.jpg" alt="Boya para SUP">
+                    <p class="precio-producto">S/. 120.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Boya para SUP RRD', 120)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/boya-para-sup-rrd2/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+                <!-- Producto 20 -->
+                <div class="tarjeta">
+                    <h3>Surf Waikiki 8’10 | Paddle Surf</h3>
+                    <img src="12.jpg" alt="Surf Waikiki 8'10">
+                    <p class="precio-producto">S/. 2,100.00</p>
+                    <div class="acciones-tarjeta">
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Surf Waikiki 8’10 | Paddle Surf', 2100)">Agregar al Carrito</button>
+                        <button type="button" class="btn-precio" data-url="https://www.sunsetboard.com/producto/surf-waikiki-810-paddle-surf/" onclick="mostrarInfo(this)">más información</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="carrito-panel">
+                <h2>Carrito de Compras</h2>
+                <div class="items-carrito" id="items-carrito">
+                    <p style="text-align: center; color: #888;">El carrito está vacío</p>
+                </div>
+                <div class="total-carrito">
+                    Total: S/. <span id="total">0.00</span>
+                </div>
+                <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+            </div>
         </div>
-    <div class="tarjeta">
-        <h3>Inflador eléctrico para ISUP</h3>
-        <img src="19.jpg" width="140" >
-        <a href="https://www.sunsetboard.com/producto/inflador-electrico-para-isup/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>12′ Explorer | Paddle Board</h3>
-        <img src="18.jpg" width="120" >
-        <a href="https://www.sunsetboard.com/producto/12%e2%80%b2-explorer-paddle-board/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>14′ Race | Paddle Board</h3>
-        <img src="17.jpg" width="140">
-        <a href=https://www.sunsetboard.com/producto/14-race-paddle-board/"" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>Surf Waikiki 9’6″ | Paddle Surf</h3>
-        <img src="16.jpg" width="140">
-        <a href="https://www.sunsetboard.com/producto/surf-waikiki-96-paddle-surf/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>9’6 Cuzco Express | Tablas de Surf</h3>
-        <img src="15.jpg"  width="120">
-        <a href="https://www.sunsetboard.com/producto/surf-longboard-kontiki-96-paddle-surf/" class="btn-precio"> mas informacion</a>
-    </div >
-    <div class="tarjeta">
-        <h3>Surf Longboard Kontiki 8’10» | Paddle Surf</h3>
-        <img src="14.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/surf-longboard-kontiki-810-paddle-surf/" class="btn-precio">mas informacion </a>
-    </div>
-    <div class="tarjeta">
-        <h3>Surf Longboard Kontiki 10’6″ | Paddle Surf</h3>
-        <img src="13.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/surf-longboard-kontiki-106-paddle-surf/" class="btn-precio">mas informacion </a>
-    </div>
-    <div class="tarjeta">
-        <h3>Big Fish 9’6 x 38″ | Paddle Board</h3>
-        <img src="1.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/big-fish-96-x-38%e2%80%b3-paddle-board/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>Big Fish 9’6 x 38″ | Paddle Board</h3>
-        <img src="2.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/big-fish-96-x-38%e2%80%b3-paddle-board/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>All Around 9’6″ | Paddle Board</h3>
-        <img src="3.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/all-around-96-paddle-board/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>8’10″ Pluma | Paddle Board</h3>
-        <img src="4.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/810%e2%80%b3-pluma-paddle-board/" class="btn-precio">mas informacion </a>
-    </div>
-    <div class="tarjeta">
-        <h3>8’10″ Pluma | Paddle Board</h3>
-        <img src="5.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/810%e2%80%b3-pluma-paddle-board/" class="btn-precio">mas informacion </a>
-    </div>
-    <div class="tarjeta">
-        <h3>10′4 SUP Air Evo inflable RRD | Paddle Board</h3>
-        <img src="6.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/10%e2%80%b24-sup-air-evo-inflable-rrd-paddle-board/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>Kayac personal | Kayak</h3>
-        <img src="7.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/kayac-personal-kayak/" class="btn-precio">mas informacion </a>
-    </div>
-    <div class="tarjeta">
-        <h3>Kayac tandem| Kayak</h3>
-        <img src="8.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/kayac-tandem-kayak/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>SUP Grupal 15′ | Paddle Board</h3>
-        <img src="9.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/sup-grupal-15-paddle-board/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>All Around 10’6″ | Paddle Board</h3>
-        <img src="10.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/all-around-106-paddle-board/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>Boya para SUP RRD</h3>
-        <img src="11.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/boya-para-sup-rrd2/" class="btn-precio"> mas informacion</a>
-    </div>
-    <div class="tarjeta">
-        <h3>Surf Waikiki 8’10 | Paddle Surf</h3>
-        <img src="12.jpg"  width="140">
-        <a href="https://www.sunsetboard.com/producto/surf-waikiki-810-paddle-surf/" class="btn-precio"> mas informacion</a>
-    </div>
+    </section>
+
+    <div id="modalInfo" class="modal-info" role="dialog" aria-modal="true" aria-labelledby="tituloModal" onclick="cerrarInfoFondo(event)">
+        <div class="modal-info-contenido">
+            <button type="button" class="cerrar-modal" aria-label="Cerrar ventana" onclick="cerrarInfo()">&times;</button>
+            <h2 id="tituloModal">Información del producto</h2>
+            <img id="imagenModal" src="" alt="Imagen del producto">
+            <p id="descripcionModal">Información del producto seleccionado.</p>
+            <p class="precio-modal" id="precioModal"></p>
+            <a id="enlaceModal" class="btn-enlace-producto" href="#" target="_blank" rel="noopener noreferrer">Ver página del producto</a>
+        </div>
     </div>
 
+    <script>
+        let carrito = [];
+
+        function mostrarInfo(boton) {
+            const tarjeta = boton.closest('.tarjeta');
+            const nombre = tarjeta.querySelector('h3').textContent.trim();
+            const imagen = tarjeta.querySelector('img');
+            const precio = tarjeta.querySelector('.precio-producto').textContent.trim();
+            
+            document.getElementById('tituloModal').textContent = nombre;
+            document.getElementById('imagenModal').src = imagen.src;
+            document.getElementById('imagenModal').alt = nombre;
+            document.getElementById('descripcionModal').textContent = 'Conoce más sobre ' + nombre + '. Puedes consultar la página del producto para obtener más detalles.';
+            document.getElementById('precioModal').textContent = precio;
+            document.getElementById('enlaceModal').href = boton.dataset.url;
+            document.getElementById('modalInfo').classList.add('contenedor-visible');
+        }
+
+        function cerrarInfo() {
+            document.getElementById('modalInfo').classList.remove('contenedor-visible');
+        }
+
+        function cerrarInfoFondo(evento) {
+            if (evento.target === document.getElementById('modalInfo')) {
+                cerrarInfo();
+            }
+        }
+
+        document.addEventListener('keydown', function(evento) {
+            if (evento.key === 'Escape') cerrarInfo();
+        });
+
+        function agregarAlCarrito(nombre, precio) {
+            const itemExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (itemExistente) {
+                itemExistente.cantidad++;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            
+            renderizarCarrito();
+        }
+
+        function cambiarCantidad(nombre, cambio) {
+            const item = carrito.find(item => item.nombre === nombre);
+            if (item) {
+                item.cantidad += cambio;
+                if (item.cantidad <= 0) {
+                    eliminarDelCarrito(nombre);
+                    return;
+                }
+            }
+            renderizarCarrito();
+        }
+
+        function eliminarDelCarrito(nombre) {
+            carrito = carrito.filter(item => item.nombre !== nombre);
+            renderizarCarrito();
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            renderizarCarrito();
+        }
+
+        function renderizarCarrito() {
+            const contenedor = document.getElementById('items-carrito');
+            const elementoTotal = document.getElementById('total');
+            
+            if (carrito.length === 0) {
+                contenedor.innerHTML = '<p style="text-align: center; color: #888;">El carrito está vacío</p>';
+                elementoTotal.innerText = '0.00';
+                return;
+            }
+
+            contenedor.innerHTML = '';
+            let total = 0;
+
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                total += subtotal;
+
+                const div = document.createElement('div');
+                div.className = 'item-carrito';
+                div.innerHTML = `
+                    <div class="info-item">
+                        <h4>${item.nombre}</h4>
+                        <span>S/. ${item.precio.toFixed(2)} c/u</span>
+                    </div>
+                    <div class="controles-item">
+                        <button class="btn-cantidad" onclick="cambiarCantidad('${item.nombre.replace(/'/g, "\\'")}', -1)">-</button>
+                        <span>${item.cantidad}</span>
+                        <button class="btn-cantidad" onclick="cambiarCantidad('${item.nombre.replace(/'/g, "\\'")}', 1)">+</button>
+                        <button class="btn-eliminar" onclick="eliminarDelCarrito('${item.nombre.replace(/'/g, "\\'")}')">Eliminar</button>
+                    </div>
+                `;
+                contenedor.appendChild(div);
+            });
+
+            elementoTotal.innerText = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
    
